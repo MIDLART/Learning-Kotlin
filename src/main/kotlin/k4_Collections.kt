@@ -50,6 +50,8 @@ fun main() {
     arrayList.add("Kotlin")
     val treeSet = TreeSet<Int>()
     val treeMap = TreeMap<Int, String>()
+    val queue: Queue<String> = LinkedList() //в стандартной библиотеке Kotlin нет собственных реализаций очередей
+    val queueFromCollection: Queue<Int> = LinkedList(listOf(1, 2, 3))
 
 
     //Поиск элемента
@@ -110,5 +112,82 @@ fun main() {
     mutableIntList.add(10)
     mutableIntList.addAll(1, 2, 3)
 
-///val r = words.subList(1, words.size).joinToString(" ")
+
+    //Подсписки
+    val fullList = listOf("a", "b", "c", "d", "e", "f")
+
+    //метод subList() - возвращает "view" оригинального списка O(1)
+    //Изменения в sublist влияют на оригинальный список
+    val sublist = fullList.subList(1, 4) //правая граница не включается
+    println(sublist) // [b, c, d]
+
+    //метод slice() - возвращает новый список O(n)
+    //По диапазону
+    val slice1 = fullList.slice(1..3) // [b, c, d]
+    println(slice1)
+    val slice2 = fullList.slice(1 until 3) // [b, c]
+    println(slice2)
+
+    //По индексам
+    val slice3 = fullList.slice(listOf(0, 2, 4)) // [a, c, e]
+    println(slice3)
+    val slice4 = fullList.slice(setOf(1, 3)) // [b, d]
+    println(slice4)
+
+    //С шагом через диапазон
+    val slice5 = fullList.slice(0..fullList.lastIndex step 2) // [a, c, e]
+    println(slice5)
+
+    //методы take() и drop() - возвращают новый список O(n)
+    val listNums = listOf(1, 2, 3, 4, 5)
+
+    // take - взять первые N элементов
+    val firstThree = listNums.take(3) // [1, 2, 3]
+    // takeLast - взять последние N
+    val lastThree = listNums.takeLast(3) // [3, 4, 5]
+
+    // drop - пропустить первые N элементов
+    val afterFirstThree = listNums.drop(3) // [4, 5, 6]
+    // dropLast - отбросить последние N
+    val withoutLastTwo = listNums.dropLast(2) // [1, 2, 3]
+
+    // Комбинация
+    val fromSecondToFourth = listNums.drop(1).take(3) // [2, 3, 4]
+
+
+    //Создание списка через диапазон индексов
+    val range = (1..5)
+    println(range) // 1..5
+    val rangeList = range.toList()
+    println(rangeList) // [1, 2, 3, 4, 5]
+
+
+    //Преобразование коллекции в строку
+    val wordslList = listOf("Hello", "world", "Kotlin")
+
+    val str = wordslList.joinToString(" ")
+    println(str) // "Hello world Kotlin"
+
+    val strNums = listNums.joinToString("-")
+    println(strNums) // "1-2-3-4-5"
+
+
+    //Деструктуризация
+    val listD = listOf("Alice", "Bob", "Charlie")
+    val (first, second, third) = listD
+    println("$first, $second, $third") // Alice, Bob, Charlie
+
+    val mapD = mapOf("name" to "Alice", "age" to 25)
+    val (key, value) = mapD.entries.first()
+    println("$key, $value") // name, Alice
+
+
+    //Операторы
+    val listO = mutableListOf("a", "b", "c")
+    listO += "d"
+    listO -= "a"
+
+    val mapO = mutableMapOf("a" to 1)
+    mapO["b"] = 2
+    val v = mapO["a"]
 }
