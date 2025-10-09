@@ -66,7 +66,7 @@ class Person1(val name: String, val age: Int) { // Поля объявляютс
 }
 
 class Person2(name: String, age: Int) { // С параметрами без полей (не указаны val или var)
-    val personName: String
+    val personName: String // для полей всегда создаются геттеры и сеттеры(var)
     var personAge: Int
 
     init {
@@ -220,6 +220,107 @@ class Person6(name: String, var age: Int) {
 
     // Деструктурирующее присваивание
     // val (name, age) = person
+}
+
+
+// object
+// используется для создания синглтонов и объектов объявлений
+object Singleton { // Использование - не нужно создавать экземпляр
+    private var connectionCount = 0
+
+    fun connect() {
+        connectionCount++
+        println("Connected. Total connections: $connectionCount")
+    }
+
+    fun disconnect() {
+        if (connectionCount > 0) connectionCount--
+        println("Disconnected. Total connections: $connectionCount")
+    }
+}
+
+
+// companion object
+// объект, который объявляется внутри класса и связан с этим классом.
+// К его членам имеет доступ класс, в котором он объявлен.
+// Инициализируется при первом доступе к классу или создании первого экземпляра класса.
+// Аналог статических методов и полей в Java.
+class User2(val username: String) {
+    companion object {
+        private const val DEFAULT_USERNAME = "guest"
+
+        fun createDefault(): User2 {
+            return User2(DEFAULT_USERNAME)
+        }
+
+        fun createUsers(vararg names: String): List<User2> { // vararg - переменное число аргументов
+            return names.map { User2(it) }
+        }
+    }
+}
+
+
+// Наследование и реализация интерфейсов
+open class Animal(val name: String)
+
+class Dog(name: String) : Animal(name) {
+    override fun toString() = "Dog: $name"
+}
+
+interface Vehicle {
+    fun start()
+    fun stop()
+}
+
+class Car : Vehicle {
+    override fun start() { println("Car started") }
+    override fun stop() { println("Car stopped") }
+}
+
+
+// Вложенные и внутренние классы
+class Outer {
+    class Nested { }        // статический вложенный класс
+    inner class Inner { }   // нестатический внутренний класс. Есть доступ к свойствам внешнего класса.
+}
+
+
+// Делегирование
+interface Repository {
+    fun getData(): String
+}
+
+class NetworkRepository : Repository {
+    override fun getData() = "Data from network"
+}
+
+class CachedRepository(private val repository: Repository) : Repository by repository {
+    // Можно добавить дополнительную логику
+}
+
+
+// Extension-функции
+fun Person.newFun() { // добавляет новую функцию в существующий класс
+    println("newFun")
+}
+
+
+// Sealed классы (запечатанные классы)
+// представляют ограниченную иерархию классов, где все возможные подтипы известны на этапе компиляции.
+sealed class Result<out T> {
+    data class Success<T>(val data: T) : Result<T>()
+    data class Error(val message: String, val code: Int) : Result<Nothing>()
+}
+// Нельзя наследовать sealed класс в другом файле
+
+// Использование с when
+fun handleResult(result: Result<String>) {
+    val message = when (result) {
+        is Result.Success -> "Data: ${result.data}"
+        is Result.Error -> "Error ${result.code}: ${result.message}"
+        // else не нужен - компилятор знает все возможные варианты
+    }
+    println(message)
 }
 
 
