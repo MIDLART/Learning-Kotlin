@@ -165,6 +165,20 @@ fun main() = runBlocking { // runBlocking - блокирует текущий п
 
     // Suspend функции
     // Это функции, которые могут быть приостановлены и возобновлены без блокировки потока.
+    suspend fun getData1(): Int {
+        delay(1000)
+        return 5
+    }
+
+    suspend fun getData2(data1: Int, name: String): String {
+        delay(500)
+        return "Результат: $data1, имя: $name"
+    }
+
+    val data1: Int = getData1()
+    println(data1)
+    val data2: String = getData2(data1, "name")
+    println(data2)
 
 
     // Flow<T>
