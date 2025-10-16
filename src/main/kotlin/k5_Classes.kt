@@ -1,6 +1,7 @@
 package org.server
 
 import java.util.*
+import kotlin.properties.Delegates
 
 //Классы
 
@@ -285,20 +286,6 @@ class Outer {
 }
 
 
-// Делегирование
-interface Repository {
-    fun getData(): String
-}
-
-class NetworkRepository : Repository {
-    override fun getData() = "Data from network"
-}
-
-class CachedRepository(private val repository: Repository) : Repository by repository {
-    // Можно добавить дополнительную логику
-}
-
-
 // Extension-функции
 fun Person.newFun() { // добавляет новую функцию в существующий класс
     println("newFun")
@@ -325,11 +312,11 @@ fun handleResult(result: Result<String>) {
 
 
 fun main() {
-    //Инициализация класса
+    // Инициализация класса
     val person = PersonK("meow", 0)
     val person2 = PersonK(age = 10, name = "meow")
 
-    //Геттеры и сеттеры
+    // Геттеры и сеттеры
     person.age = 18
     println(person.name + " " + person.age)
 }
