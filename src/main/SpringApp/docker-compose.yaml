@@ -1,0 +1,27 @@
+services:
+  postgres:
+    image: 'postgres'
+    container_name: 'my_postgres_db'
+    environment:
+      - 'POSTGRES_DB=mydatabase'
+      - 'POSTGRES_PASSWORD=admin'
+      - 'POSTGRES_USER=admin'
+    ports:
+      - '5432:5432'
+    volumes:
+      - 'postgres_data:/var/lib/postgresql/data'
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: 'spring_app'
+    ports:
+      - '8080:8080'
+    environment:
+      - 'SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/mydatabase'
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
