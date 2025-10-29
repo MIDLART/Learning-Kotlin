@@ -9,17 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0c204ae-b166-409a-8259-2a5ebb80483f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/SpringApp/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/SpringApp/src/main/kotlin/org/server/springapp/MyController.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/SpringApp/src/main/kotlin/org/server/springapp/MyRepository.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/SpringApp/src/main/kotlin/org/server/springapp/MyService.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/SpringApp/src/main/kotlin/org/server/springapp/SQLEntity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+    <list default="true" id="c0c204ae-b166-409a-8259-2a5ebb80483f" name="Changes" comment="Spring app on Kotlin">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -360,7 +351,7 @@
       <workItem from="1761604525962" duration="731000" />
       <workItem from="1761605570287" duration="215000" />
       <workItem from="1761657578303" duration="2585000" />
-      <workItem from="1761750329770" duration="3539000" />
+      <workItem from="1761750329770" duration="6760000" />
     </task>
     <task id="LOCAL-00001" summary="create">
       <option name="closed" value="true" />
@@ -442,7 +433,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760644068525</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Spring app on Kotlin">
+      <option name="closed" value="true" />
+      <created>1761762613191</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1761762613191</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -458,7 +457,8 @@
     <MESSAGE value="Add calling Kotlin from Java" />
     <MESSAGE value="Add calling Java from Kotlin" />
     <MESSAGE value="Class delegation has been moved to its own file. &#10;Added delegation of properties." />
-    <option name="LAST_COMMIT_MESSAGE" value="Class delegation has been moved to its own file. &#10;Added delegation of properties." />
+    <MESSAGE value="Spring app on Kotlin" />
+    <option name="LAST_COMMIT_MESSAGE" value="Spring app on Kotlin" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
